@@ -1,1 +1,3 @@
-from tenable/nessus:latest-ubuntu
+ARG NESSUS_VERSION
+
+from tenable/nessus:${NESSUS_VERSION}

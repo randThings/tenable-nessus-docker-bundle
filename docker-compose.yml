@@ -1,16 +1,21 @@
 version: '3.8'
+
 services:
   nessus:
+    restart: no
     build:
       context: ./config
       dockerfile: nessus.dockerfile
-    image: x01/nessus
+      args:
+        - NESSUS_VERSION=${NESSUS_VERSION}
+    image: x01/nessus:${NESSUS_VERSION}
     hostname: nessus
     container_name: nessus
     networks:
       nessus_net:
     ports:
       - 8834:8834
+
 networks:
   nessus_net:
     name: nessus_net
